@@ -29,7 +29,7 @@ const ContactInfo = () => {
             ...JSON.parse(localStorage.getItem('registrationData') || '{}'),
             ...formData
         }));
-        navigate('/register/confirmation');
+        navigate('/register/confirmation'); // ! Acomodamos ruta (agregamos /register)
     };
 
     return (

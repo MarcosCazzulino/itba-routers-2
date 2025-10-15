@@ -1,8 +1,7 @@
-import React from 'react';
-import { Routes, Route, Link } from 'react-router-dom';
-import HomePage from './pages/HomePage';
-import Register from './components/Register';
-import PersonalInfo from './components/PersonalInfo';
+import { Routes, Route, Link } from 'react-router-dom'; // ! Quitamos Browser Router
+import HomePage from './pages/HomePage'; // ! Cambiamos componente Home por página HomePage
+import RegisterPage from './pages/RegisterPage'; // ! Cambiamos componente Register por página RegisterPage
+import PersonalInfo from './components/PersonalInfo'; // ! cambiamos la ruta (decía /register/personal...)
 import ContactInfo from './components/ContactInfo';
 import Confirmation from './components/Confirmation';
 
@@ -14,11 +13,11 @@ function App() {
         <Link to="/register">Registrarse</Link>
       </nav>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/register" element={<Register />}/> {/* ! Error de cierre de etiqueta */}
-        <Route path="personal" element={<PersonalInfo />} />
-        <Route path="contact" element={<ContactInfo />} />
-        <Route path="confirmation" element={<Confirmation />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/register" element={<RegisterPage />}/> {/* ! Error de cierre de etiqueta */}
+        <Route path="/register/personal" element={<PersonalInfo />} /> {/* ! Cambio de rutas*/}
+        <Route path="/register/contact" element={<ContactInfo />} />
+        <Route path="/register/confirmation" element={<Confirmation />} />
       </Routes>
     </div>
   );

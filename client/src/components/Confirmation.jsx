@@ -17,8 +17,8 @@ const Confirmation = () => {
             <p>Por favor revisa tus datos antes de confirmar:</p>
             <div style={{ border: '1px solid #ddd', padding: '20px', marginBottom: '20px' }}>
                 <h3>Información Personal</h3>
-                <p><strong>Nombre:</strong> {registrationData.firstName}
-                {registrationData.lastName}</p>
+                {/* ! Acomodamos firstName y lastName, separándolos para que se despeguen */}
+                <p><strong>Nombre:</strong> {registrationData.firstName} {registrationData.lastName}</p>
                 <p><strong>Fecha de Nacimiento:</strong> {registrationData.dateOfBirth}</p>
                 <p><strong>Género:</strong> {registrationData.gender}</p>
                 <h3>Información de Contacto</h3>

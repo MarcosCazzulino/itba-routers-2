@@ -10,6 +10,13 @@ const PersonalInfo = () => {
         gender: ''
     });
 
+    // ! Copiamos lógica de ContactInfo para guardar la data en el localStorage
+    React.useEffect(() => {
+        // Cargar datos previos del localStorage
+        const savedData = JSON.parse(localStorage.getItem('registrationData') || '{}');
+        setFormData(prev => ({ ...prev, ...savedData }));
+    }, []);
+
     const handleChange = (e) => {
         setFormData({
             ...formData,
@@ -24,7 +31,7 @@ const PersonalInfo = () => {
             ...JSON.parse(localStorage.getItem('registrationData') || '{}'),
             ...formData
         }));
-        navigate('/register/contact');
+        navigate('/register/contact'); // ! acomodamos ruta (agregamos /register) 
     };
 
     return (

@@ -8,9 +8,14 @@ const Register = () => {
         { path: 'contact', label: 'Información de Contacto' },
         { path: 'confirmation', label: 'Confirmación' }
     ];
-    const currentStep = steps.findIndex(step =>
+
+    let currentStep = steps.findIndex(step => // ! Cambiamos const por let para modificar el valor
         location.pathname.includes(step.path)
     );
+
+    if (currentStep === -1){ // ! Si no encuentra ninguna ruta, forzamos a activar el primer paso
+        currentStep = 0;
+    }
 
     return (
         <div style={{ padding: '20px', maxWidth: '600px', margin: '0 auto' }}>
@@ -18,9 +23,8 @@ const Register = () => {
             {/* Indicador de pasos */}
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '30px' }}>
                 {steps.map((step, index) => (
-                    <div key={step.path} style={{ textAlign: 'center', flex: 1 }}>
-                        <div
-                        style={{
+                    <Link key={step.path} to={`${step.path}`} style={{ textAlign: 'center', flex: 1 }}> {/* ! Cambiamos div por <Link/> */}
+                        <div style={{
                         width: '30px',
                         height: '30px',
                         borderRadius: '50%',
@@ -35,7 +39,7 @@ const Register = () => {
                             {index + 1}
                         </div>
                         <span style={{ fontSize: '12px' }}>{step.label}</span>
-                    </div>
+                    </Link>
                 ))}
             </div>
             {/* Formulario actual */}
