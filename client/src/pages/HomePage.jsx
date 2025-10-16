@@ -1,9 +1,11 @@
 import React from 'react';
+import EditUserModal from '../components/EditUserModal';
 
 function HomePage(){
     const [users, setUsers] = React.useState([]);
     const [loading, setLoading] = React.useState(true);
     const [error, setError] = React.useState(null);
+    const [editingUser, setEditingUser] = React.useState(null);
 
     React.useEffect(() => {
         fetchUsers();
@@ -46,6 +48,32 @@ function HomePage(){
         }
     };
 
+    const editUser = (user) => {
+        setEditingUser(user);
+    };
+
+    const saveEditedUser = async (id, updatedData) => {
+        try {
+            const response = await fetch(`http://localhost:4000/api/users/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(updatedData),
+            });
+
+            if (!response.ok) {
+                throw new Error('Error al actualizar el usuario');
+            }
+
+            // Actualizar la lista de usuarios después de editar
+            setUsers(users.map(user => user.id === id ? { ...user, ...updatedData } : user));
+            alert('Usuario actualizado exitosamente');
+        } catch (err) {
+            alert('Error al actualizar el usuario: ' + err.message);
+        }
+    };
+
     if (loading) {
         return (
             <div className="container">
@@ -82,6 +110,12 @@ function HomePage(){
                             <p><strong>Género:</strong> {user.gender}</p>
                             <p><strong>Dirección:</strong> {user.address}</p>
                             <button
+                                onClick={() => editUser(user)}
+                                style={{ marginTop: '10px', marginRight: '10px' }}
+                            >
+                                Editar Usuario
+                            </button>
+                            <button
                                 onClick={() => deleteUser(user.id)}
                                 className="btn-danger"
                                 style={{ marginTop: '10px' }}
@@ -91,6 +125,13 @@ function HomePage(){
                         </div>
                     ))}
                 </div>
+            )}
+            {editingUser && (
+                <EditUserModal
+                    user={editingUser}
+                    onClose={() => setEditingUser(null)}
+                    onSave={saveEditedUser}
+                />
             )}
         </div>
     )
