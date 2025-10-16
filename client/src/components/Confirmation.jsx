@@ -1,14 +1,49 @@
 import React from 'react';
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 const Confirmation = () => {
     const navigate = useNavigate();
+    const [users, setUsers] = useState([])
     const [registrationData] = React.useState(() => JSON.parse(localStorage.getItem('registrationData') || '{}'));
 
-    const handleConfirm = () => {
-        alert('¡Registro completado exitosamente!');
-        localStorage.removeItem('registrationData'); // Limpiar datos
-        navigate('/');
+    const crearUser = (user) => {
+        setUsers([...users, user])
+    }
+
+    const handleConfirm = async () => {
+        try{
+            const response = await fetch('http://localhost:4000/api/users', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    firstName: registrationData.firstName,
+                    lastName: registrationData.lastName,
+                    dateOfBirth: registrationData.dateOfBirth,
+                    gender: registrationData.gender,
+                    email: registrationData.email,
+                    phone: registrationData.phone,
+                    address: registrationData.address,
+                    city: registrationData.city
+                })
+            })
+
+            if (!response.ok) {
+                throw new Error('Algo salió mal')
+            }
+
+            const data = await response.json()
+            crearUser(data.user)
+
+            alert('¡Registro completado exitosamente!');
+            localStorage.removeItem('registrationData'); // Limpiar datos
+            navigate('/');
+
+        } catch (error){
+            console.error(error)
+        }
     };
 
     return (
