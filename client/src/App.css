@@ -67,6 +67,7 @@ h1{
   border: none;
   border: 2px solid #eec;
   border-radius: 20px;
+  color: #eec;
 }
 
 form, .confirmationPage{
