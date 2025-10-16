@@ -76,6 +76,12 @@ button{
   color: white;
 }
 
+.registrations-list{
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
 .registration-card{
   display: flex;
   flex-direction: column;
@@ -86,6 +92,8 @@ button{
   border-radius: 20px;
   padding: 50px;
 }
+
+
 
 .btn-group{
   display: flex;
