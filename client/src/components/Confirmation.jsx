@@ -50,9 +50,8 @@ const Confirmation = () => {
         <div>
             <h2>Confirmación de Registro</h2>
             <p>Por favor revisa tus datos antes de confirmar:</p>
-            <div style={{ border: '1px solid #ddd', padding: '20px', marginBottom: '20px' }}>
+            <div className="registration-card">
                 <h3>Información Personal</h3>
-                {/* ! Acomodamos firstName y lastName, separándolos para que se despeguen */}
                 <p><strong>Nombre:</strong> {registrationData.firstName} {registrationData.lastName}</p>
                 <p><strong>Fecha de Nacimiento:</strong> {registrationData.dateOfBirth}</p>
                 <p><strong>Género:</strong> {registrationData.gender}</p>
@@ -62,21 +61,21 @@ const Confirmation = () => {
                 <p><strong>Dirección:</strong> {registrationData.address}</p>
                 <p><strong>Ciudad:</strong> {registrationData.city}</p>
             </div>
-            <div>
+            <div className="btn-group">
                 <button
                     type="button"
                     onClick={() => navigate('/register/contact')}
-                    style={{ marginRight: '10px' }}
+                    className="btn-secondary"
                     > Anterior
                 </button>
                 <button
                     type="button"
                     onClick={handleConfirm}
-                    style={{ marginRight: '10px', backgroundColor: '#28a745', color: 'white' }}
+                    className="btn-success"
                     >Confirmar Registro
                 </button>
                 <Link to="/">
-                    <button type="button">Cancelar</button>
+                    <button type="button" className="btn-secondary">Cancelar</button>
                 </Link>
             </div>
         </div>
