@@ -1,42 +1,98 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, #root, .app, nav{
+  max-width: 100%;
+}
+
+body{
+  min-height: 100dvh;
+  background-image: linear-gradient(to bottom right, #333, #222, #333);
+}
+
+nav{
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+
+nav a{
+  text-decoration: none;
+  color: #eec;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+h1{
+  color: #eec;
+}
+
+.container, .container-register{
+  width: 100%;
+  height: 100%;
+  color: #eec;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3.125rem;
+}
+
+h1{
+  margin-top: 25px;
+}
+
+.container h2{
+  border-bottom: 2px groove #eec;
+  width: 80%;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.container-register div{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.container-register div div{
+  text-decoration: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+form, .confirmationPage{
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  color: #eec;
+  gap: 1.25rem;
 }
 
-.card {
-  padding: 2em;
+button{
+  color: white;
 }
 
-.read-the-docs {
-  color: #888;
+.registration-card{
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  gap: .625rem;
+  border: 2px solid #eec;
+  border-radius: 20px;
+  padding: 50px;
+}
+
+.btn-group{
+  display: flex;
+  gap: .625rem;
+}
+
+.btn-success{
+  background-color: #282;
+  font-weight: bold;
 }

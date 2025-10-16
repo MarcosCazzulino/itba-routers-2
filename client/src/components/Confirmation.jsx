@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import '../App.css'
 
 const Confirmation = () => {
     const navigate = useNavigate();
@@ -47,7 +48,7 @@ const Confirmation = () => {
     };
 
     return (
-        <div>
+        <div className='confirmationPage'>
             <h2>Confirmación de Registro</h2>
             <p>Por favor revisa tus datos antes de confirmar:</p>
             <div className="registration-card">

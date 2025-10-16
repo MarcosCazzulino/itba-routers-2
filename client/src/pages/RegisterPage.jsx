@@ -1,5 +1,6 @@
 import React from 'react';
 import { Outlet, Link, useLocation } from 'react-router-dom';
+import '../App.css'
 
 const Register = () => {
     const location = useLocation();
@@ -18,18 +19,19 @@ const Register = () => {
     }
 
     return (
-        <div style={{ padding: '20px', maxWidth: '600px', margin: '0 auto' }}>
+        <div className='container-register'>
             <h1>Registro de Usuario</h1>
             {/* Indicador de pasos */}
-            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '30px' }}>
+            <div>
                 {steps.map((step, index) => (
                     <Link key={step.path} to={`${step.path}`} style={{ textAlign: 'center', flex: 1 }}> {/* ! Cambiamos div por <Link/> */}
                         <div style={{
                         width: '30px',
                         height: '30px',
                         borderRadius: '50%',
-                        backgroundColor: index <= currentStep ? '#007bff' : '#ccc',
-                        color: 'white',
+                        backgroundColor: index <= currentStep ? '#eec' : '#555',
+                        color: 'black',
+                        fontWeight: 'bold',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',

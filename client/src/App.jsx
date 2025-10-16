@@ -4,6 +4,7 @@ import RegisterPage from './pages/RegisterPage'; // ! Cambiamos componente Regis
 import PersonalInfo from './components/PersonalInfo'; // ! cambiamos la ruta (decía /register/personal...)
 import ContactInfo from './components/ContactInfo';
 import Confirmation from './components/Confirmation';
+import './App.css'
 
 function App() {
   return (
