@@ -66,7 +66,7 @@ const Confirmation = () => {
                 <button
                     type="button"
                     onClick={() => navigate('/register/contact')}
-                    className="btn-secondary"
+                    className="btn-back"
                     > Anterior
                 </button>
                 <button
@@ -76,7 +76,7 @@ const Confirmation = () => {
                     >Confirmar Registro
                 </button>
                 <Link to="/">
-                    <button type="button" className="btn-secondary">Cancelar</button>
+                    <button type="button" className="btn-cancel">Cancelar</button>
                 </Link>
             </div>
         </div>

@@ -84,10 +84,11 @@ const ContactInfo = () => {
                 <button
                     type="button"
                     onClick={() => navigate('/register/personal')}
+                    className='btn-back'
                     style={{ marginRight: '10px' }}
                     > Anterior
                 </button>
-                <button type="submit">Siguiente</button>
+                <button className='btn-next' type="submit">Siguiente</button>
             </div>
         </form>
     );

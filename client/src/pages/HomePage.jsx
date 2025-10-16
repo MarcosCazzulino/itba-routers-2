@@ -125,6 +125,7 @@ function HomePage(){
                             <p><strong>Dirección:</strong> {user.address}</p>
                             <button
                                 onClick={() => editUser(user)}
+                                className='btn-edit'
                                 style={{ marginTop: '10px', marginRight: '10px' }}
                             >
                                 Editar Usuario

@@ -112,3 +112,15 @@ button{
   background-color: #282;
   font-weight: bold;
 }
+
+.btn-danger, a .btn-cancel{
+  background-color: #a22;
+}
+
+.btn-edit, .btn-next{
+  background-color: #44f;
+}
+
+.btn-back{
+  background-color: #f82;
+}

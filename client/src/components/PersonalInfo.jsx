@@ -88,9 +88,9 @@ const PersonalInfo = () => {
             </div>
             <div style={{ marginTop: '20px' }}>
                 <Link to="/" style={{ marginRight: '10px' }}>
-                    <button type="button">Cancelar</button>
+                    <button className='btn-cancel' type="button">Cancelar</button>
                 </Link>
-                <button type="submit">Siguiente</button>
+                <button className='btn-next' type="submit">Siguiente</button>
             </div>
         </form>
     );
