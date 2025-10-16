@@ -1,5 +1,6 @@
 import React from 'react';
 import '../App.css'
+import { useState } from 'react';
 import EditUserModal from '../components/EditUserModal';
 
 function HomePage(){
@@ -7,7 +8,7 @@ function HomePage(){
     const [loading, setLoading] = React.useState(true);
     const [error, setError] = React.useState(null);
     const [editingUser, setEditingUser] = React.useState(null);
-
+// funciono?
     React.useEffect(() => {
         fetchUsers();
     }, []);
@@ -74,7 +75,13 @@ function HomePage(){
             alert('Error al actualizar el usuario: ' + err.message);
         }
     };
-
+    const [buscado, setQuery] = useState('');
+    const filteredUsers = users.filter(p => {
+        const query = buscado.toLowerCase().trim();
+        if (!query) return true;
+        const words = (p.firstName || '').toLowerCase().split(' ');
+        return words.some(word => word.startsWith(query));
+  });
     if (loading) {
         return (
             <div className="container">
@@ -94,14 +101,20 @@ function HomePage(){
     }
 
     return(
-        <div className="container">
+     <div className="container">
             <h1>Bienvenido a la página de inicio</h1>
             <h2>Usuarios Registrados</h2>
-            {users.length === 0 ? (
+            <input
+            type="text"
+            placeholder="Buscar usuario..."
+            value={buscado}
+            onChange={e => setQuery(e.target.value)}
+          />
+            {filteredUsers.length === 0 ? (
                 <p>No hay usuarios registrados aún.</p>
             ) : (
                 <div className="registrations-list">
-                    {users.map((user) => (
+                    {filteredUsers.map((user) =>  (
                         <div key={user.id} className="registration-card">
                             <h3>{user.firstName} {user.lastName}</h3>
                             <p><strong>Email:</strong> {user.email}</p>
